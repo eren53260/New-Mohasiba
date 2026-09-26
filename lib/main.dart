@@ -187,7 +187,7 @@ class _AppState extends State<App> {
         scaffoldBackgroundColor: const Color(0xFFF9F7FC),
       ),
       home: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.values[1],
         child: loading
             ? const Scaffold(
                 body: Center(

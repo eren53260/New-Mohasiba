@@ -1,0 +1,26 @@
+name: mohasiba
+description: دفتر قرض Mohasiba
+publish_to: "none"
+version: 1.0.0+1
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.3.3
+  intl: ^0.19.0
+  flutter_launcher_icons: ^0.14.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/mohasiba_icon.png
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/mohasiba_icon.png
+  adaptive_icon_background: "#F5F3FF"
+  adaptive_icon_foreground: assets/mohasiba_icon.png

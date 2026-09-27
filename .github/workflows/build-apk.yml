@@ -27,12 +27,27 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Verify project files
+      - name: Verify Dart project
         run: |
           test -f pubspec.yaml
           test -f lib/main.dart
-          echo "Using existing lib/main.dart"
-          grep -n "TextDirection" lib/main.dart || true
+
+      - name: Generate modern Android project files
+        run: |
+          cp lib/main.dart /tmp/mohasiba_main.dart
+          flutter create --platforms=android .
+          cp /tmp/mohasiba_main.dart lib/main.dart
+
+      - name: Set Android app name
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("android/app/src/main/AndroidManifest.xml")
+          if p.exists():
+              s = p.read_text(encoding="utf-8")
+              s = s.replace('android:label="app"', 'android:label="Mohasiba"')
+              p.write_text(s, encoding="utf-8")
+          PY
 
       - name: Get dependencies
         run: flutter pub get
